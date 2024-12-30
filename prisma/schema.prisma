@@ -21,9 +21,17 @@ model Article {
   tags          Tag[]
   featured      Boolean    @default(false)
   coverImage    String?
+  originalUrl   String?
 
   @@unique([categoryId, slug])
   @@index([publishedAt])
+}
+
+model ArticleNotArticle {
+  id          String    @id @default(cuid())
+  originalUrl String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Category {

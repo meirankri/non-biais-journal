@@ -56,29 +56,30 @@ export default async function CategoryPage({
             <Link
               key={article.id}
               href={`/${params.categorySlug}/${article.slug}`}
-              className="block group"
+              className="block group h-full"
             >
-              <div className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105">
-                {/* Placeholder for an image */}
+              <div className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105 h-full flex flex-col">
                 {article.coverImage ? (
                   <img
                     src={article.coverImage}
                     alt={article.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover flex-shrink-0"
                   />
                 ) : (
-                  <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">
+                  <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500 flex-shrink-0">
                     No Image
                   </div>
                 )}
-                {/* Content */}
-                <div className="p-4">
+                <div className="p-4 flex flex-col flex-grow">
                   <h2 className="text-lg font-semibold group-hover:text-blue-500">
                     {article.title}
                   </h2>
-                  <p className="text-gray-600 text-sm line-clamp-3 mt-2">
-                    {article.content.substring(0, 100)}...
-                  </p>
+                  <p
+                    className="text-gray-600 text-sm line-clamp-3 mt-2 flex-grow"
+                    dangerouslySetInnerHTML={{
+                      __html: article.content.substring(0, 100) + "...",
+                    }}
+                  />
                   <p className="text-gray-400 text-xs mt-4">
                     Publié le{" "}
                     {new Date(article.publishedAt).toLocaleDateString()}

@@ -1,4 +1,4 @@
-Monde
+Monde,
 Europe
 Faits-divers
 Politique
@@ -9,3 +9,15 @@ Culture
 economie
 Sante
 Sciences
+
+    {"cm56ui2t40000xiq2xgyu2rki",	"Monde"}	
+	{"cm56ui3270003xiq2k7ta737a",	"Culture"}	
+	{"cm56ui3270002xiq20fl8962i",	"Europe"}	
+	{"cm56ui3270001xiq2bd1ptbje",	"Environnement"}	
+	{"cm56ui32f0004xiq20m1fyh1r",	"Faits"-divers}
+    {"cm56ui33d0005xiq2rri11psa",	"Societe"}	
+	{"cm56ui33x0006xiq2u6fdfocc",	"economie"}	
+	{"cm56ui34k0007xiq2otz3chvb",	"Sante"}	
+	{"cm56ui35c0008xiq26uhu85b5",	"Politique"}	
+	{"cm56ui35c000axiq2l9f3pu5e",	"Sciences"}	
+	{"cm56ui35c0009xiq20geucxuk",	"Sport"}	
