@@ -10,10 +10,13 @@ async function getArticles(limit: number) {
       category: true,
       tags: true,
     },
-    orderBy: {
-      publishedAt: "desc",
-    },
-    take: limit, // Charge uniquement les 10 premiers articles
+    orderBy: [
+      {
+        publishedAt: "desc",
+      },
+    ],
+    distinct: ["categoryId"],
+    take: limit,
   });
 
   return articles;
@@ -56,16 +59,6 @@ export default async function Page() {
             </Link>
           ))}
         </div>
-      </section>
-
-      <section>
-        <h2 className="text-3xl font-bold mb-8">Plus d'articles</h2>
-        <Link
-          href="/page/1"
-          className="text-blue-500 underline text-lg hover:text-blue-700"
-        >
-          Voir tous les articles →
-        </Link>
       </section>
     </main>
   );

@@ -1,12 +1,8 @@
 name: Run Scripts and Build Next.js
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  schedule:
+    - cron: "0 12 * * *" # S'exécute tous les jours à 12h00 UTC
 
 jobs:
   build:

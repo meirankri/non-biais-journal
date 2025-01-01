@@ -46,7 +46,7 @@ async function fetchLinksFromPage(
   categorySlug: string,
   pageNumber?: number
 ): Promise<string[]> {
-  const url = `${baseUrl}/${categorySlug.toLowerCase()}/${
+  const url = `${formatLinkToBaseUrl(baseUrl)}/${categorySlug.toLowerCase()}/${
     pageNumber ? `${pageNumber}.html` : ""
   }`;
 
@@ -347,7 +347,11 @@ async function processCategory(category: {
 export async function generateArticle(): Promise<void> {
   for (const category of categories) {
     console.log(`Processing category: ${category.slug}`);
-    await processCategory(category);
+    try {
+      await processCategory(category);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   console.log("Tous les articles ont été traités !");

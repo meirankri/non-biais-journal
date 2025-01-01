@@ -44,9 +44,9 @@ async function uploadToFTP() {
   try {
     console.log("Connecting to FTP server...");
     await client.access({
-      host: "ftp.cluster023.hosting.ovh.net", // Remplacez par l'adresse de votre serveur FTP
-      user: "meiranq", // Nom d'utilisateur FTP
-      password: "Kvoutsa770", // Mot de passe FTP
+      host: process.env.FTP_HOST,
+      user: process.env.FTP_USER,
+      password: process.env.FTP_PASSWORD,
       secure: false, // Activez si vous utilisez un serveur FTP sécurisé (FTPS)
       port: 21,
     });
