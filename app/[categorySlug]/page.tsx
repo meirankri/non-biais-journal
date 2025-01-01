@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+export const revalidate = 60; // Re-générer toutes les 60 secondes
+
 // Pre-generate paths for all categories
 export async function generateStaticParams() {
   const categories = await prisma.category.findMany({

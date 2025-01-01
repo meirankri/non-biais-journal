@@ -10,7 +10,8 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'  prisma/seed.js",
-    "populate": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' -r ./scripts/tsconfig-paths.js scripts/generateArticle.ts  scripts/generateArticle.ts"
+    "populate": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' -r ./scripts/tsconfig-paths.js scripts/generateArticle.ts  scripts/generateArticle.ts",
+    "build:out": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' -r ./scripts/tsconfig-paths.js scripts/build.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^9.3.0",
@@ -43,6 +44,7 @@
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
+    "basic-ftp": "^5.0.5",
     "cheerio": "^1.0.0",
     "class-variance-authority": "^0.7.1",
     "date-fns": "3.3.1",

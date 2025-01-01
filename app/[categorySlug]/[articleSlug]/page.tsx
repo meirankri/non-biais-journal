@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+export const revalidate = 60; // Re-générer toutes les 60 secondes
+
 // Generate all static paths for articles
 export async function generateStaticParams() {
   const articles = await prisma.article.findMany({

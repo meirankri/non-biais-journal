@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
+export const revalidate = 60; // Re-générer toutes les 60 secondes
+
 async function getArticles(limit: number) {
   const articles = await prisma.article.findMany({
     include: {

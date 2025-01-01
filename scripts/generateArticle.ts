@@ -1,10 +1,8 @@
 import { messagePrompt } from "@/constants";
 import { createProvider } from "@/lib/ai-providers";
 import { Message } from "@/types/ai-providers";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import * as cheerio from "cheerio";
-
-const prisma = new PrismaClient();
 
 type ArticleData = {
   title: string;
@@ -218,10 +216,8 @@ async function fetchArticleContent(
 async function reformulateArticle(
   content: string
 ): Promise<{ title: string; content: string; isArticle: boolean } | null> {
-  const provider = createProvider(process.env.AI_PROVIDER || "mistral", {
-    apiKey:
-      process.env[`${process.env.AI_PROVIDER?.toUpperCase()}_API_KEY`] || "",
-    model: process.env.AI_MODEL,
+  const provider = createProvider("mistral", {
+    apiKey: process.env.MISTRAL_API_KEY || "",
   });
 
   try {
@@ -348,7 +344,7 @@ async function processCategory(category: {
 /**
  * Fonction principale pour traiter toutes les catégories.
  */
-async function main(): Promise<void> {
+export async function generateArticle(): Promise<void> {
   for (const category of categories) {
     console.log(`Processing category: ${category.slug}`);
     await processCategory(category);
@@ -358,8 +354,7 @@ async function main(): Promise<void> {
   await prisma.$disconnect();
 }
 
-// Exécution du script
-main().catch(async (error) => {
+generateArticle().catch(async (error) => {
   console.error(error);
   await prisma.$disconnect();
   process.exit(1);
