@@ -1,8 +1,9 @@
 name: Run Scripts and Build Next.js
 
 on:
-  schedule:
-    - cron: "0 12 * * *" # S'exécute tous les jours à 12h00 UTC
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -30,12 +31,6 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: echo "Environment variables configured."
 
-      - name: Run populate script
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-        run: npm run populate
-
       - name: Run build script
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -45,11 +40,8 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: npm run build:out
 
-      - name: Build Next.js
+      - name: Run populate script
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USER: ${{ secrets.FTP_USER }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: npm run build
+        run: npm run populate

@@ -45,6 +45,9 @@ async function uploadToFTP() {
 
   try {
     console.log("Connecting to FTP server...");
+    console.log(process.env.FTP_HOST);
+    console.log(process.env.FTP_USER);
+    console.log(process.env.FTP_PASSWORD);
     await client.access({
       host: process.env.FTP_HOST,
       user: process.env.FTP_USER,
