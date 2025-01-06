@@ -78,7 +78,7 @@ async function uploadToFTP() {
 export async function build(): Promise<void> {
   try {
     // Build project
-    await buildProject();
+    // await buildProject();
 
     // Move 'out' folder to root
     await moveOutToRoot();
