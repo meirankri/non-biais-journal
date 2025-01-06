@@ -61,7 +61,7 @@ async function uploadToFTP() {
     const remoteDirectory = "/non-biais";
     console.log(`Navigating to remote directory: ${remoteDirectory}`);
     await client.ensureDir(remoteDirectory); // Crée le répertoire s'il n'existe pas
-    await client.clearWorkingDir(); // (Optionnel) Nettoie le répertoire distant
+    // await client.clearWorkingDir(); // (Optionnel) Nettoie le répertoire distant
 
     // Téléverser le dossier local 'out'
     const localDirectory = "out"; // Chemin du dossier à téléverser
@@ -81,7 +81,7 @@ export async function build(): Promise<void> {
     // await buildProject();
 
     // Move 'out' folder to root
-    await moveOutToRoot();
+    // await moveOutToRoot();
 
     // Upload 'out' folder via FTP
     await uploadToFTP();
