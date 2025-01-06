@@ -51,10 +51,11 @@ async function uploadToFTP() {
     );
     console.log("FTP_USER length:", process.env.FTP_USER?.length);
     console.log("FTP_PASSWORD is set:", Boolean(process.env.FTP_PASSWORD));
+
     await client.access({
-      host: process.env.FTP_HOST,
-      user: process.env.FTP_USER,
-      password: process.env.FTP_PASSWORD,
+      host: "ftp.cluster023.hosting.ovh.net",
+      user: "meiranq",
+      password: "Asrezdd770",
       secure: false, // Activez si vous utilisez un serveur FTP sécurisé (FTPS)
       port: 21,
     });
